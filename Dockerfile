@@ -21,9 +21,9 @@ RUN cargo build --target x86_64-unknown-linux-musl --release
 ################
 ##### Runtime
 FROM --platform=linux/amd64 alpine:3.16.0 AS runtime 
-
-# Copy application binary from builder image
 COPY --from=builder /app/target/x86_64-unknown-linux-musl/release/web-app /usr/local/bin
+CMD ["/usr/local/bin/web-app"]
 
-# Run the application
+FROM --platform=linux/amd64 alpine:3.16.0 AS runtime 
+COPY --from=builder /app/target/armv7-unknown-linux-gnueabihf/release/web-app /usr/local/bin
 CMD ["/usr/local/bin/web-app"]
