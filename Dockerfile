@@ -19,6 +19,7 @@ RUN mkdir target/amd64 && cp target/x86_64-unknown-linux-musl/release/web-app ta
 ################
 ##### Runtime
 FROM  alpine:3.16.0 AS runtime 
+ARG TARGETARCH
 COPY --from=builder /app/target/${TARGETARCH}/web-app /usr/local/bin
 CMD ["/usr/local/bin/web-app"]
 
