@@ -6,14 +6,15 @@ COPY . .
 RUN apt update && apt upgrade -y
 RUN apt install -y g++-arm-linux-gnueabihf libc6-dev-armhf-cross
 
-RUN rustup target add armv7-unknown-linux-musleabi x86_64-unknown-linux-musl
-RUN rustup toolchain install stable-armv7-unknown-linux-musleabi
+RUN rustup target add armv7-unknown-linux-gnueabihf x86_64-unknown-linux-musl
+RUN rustup toolchain install stable-armv7-unknown-linux-gnueabihf
 
 RUN cargo build --release --target x86_64-unknown-linux-musl
-RUN cargo build --release --target armv7-unknown-linux-musleabi
+ENV CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc CC_armv7_unknown_Linux_gnueabihf=arm-linux-gnueabihf-gcc CXX_armv7_unknown_linux_gnueabihf=arm-linux-gnueabihf-g++
+RUN cargo build --release --target armv7-unknown-linux-gnueabihf
 
 RUN mkdir target/amd64 && cp target/x86_64-unknown-linux-musl/web-app target/amd64 && \
-    mkdir target/arm && target/armv7-unknown-linux-musleabi/web-app target/arm_v7
+    mkdir target/arm && target/armv7-unknown-linux-gnueabihf/web-app target/arm
 
 ################
 ##### Runtime
