@@ -22,8 +22,8 @@ RUN cargo build --target x86_64-unknown-linux-musl --release
 ##### Runtime
 FROM  alpine:3.16.0 AS runtime 
 ENV TARGET=.
-ENV ${TARGETPLATFORM=linux/amd64,+x86_64-unknown-linux-musl}
-ENV ${TARGETPLATFORM=linux/arm/v7,+armv7-unknown-linux-gnueabihf}
+ENV ${TARGETPLATFORM=linux/amd64:+x86_64-unknown-linux-musl}
+ENV ${TARGETPLATFORM=linux/arm/v7:+armv7-unknown-linux-gnueabihf}
 COPY --from=builder /app/target/${TARGET}/release/web-app /usr/local/bin
 CMD ["/usr/local/bin/web-app"]
 
