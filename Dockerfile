@@ -1,6 +1,6 @@
 ################
 ##### Builder
-FROM --platform=linux/amd64 rust:stable as builder
+FROM --platform=linux/amd64 rust:buster as builder
 
 RUN apt update && apt upgrade -y
 RUN apt install -y g++-arm-linux-gnueabihf libc6-dev-armhf-cross
