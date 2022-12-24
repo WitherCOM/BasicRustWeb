@@ -1,6 +1,6 @@
 [package]
-name = "first_web_app" # the name of the package
+name = "web-app" # the name of the package
 version = "1.0.0"    # the current version, obeying semver
-authors = ["Finch <nemeth.csaba.tibor@gmail.com>"]
+edition = "2021"
 [dependencies]
 rocket = "0.5.0-rc.2"
