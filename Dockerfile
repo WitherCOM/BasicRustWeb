@@ -2,7 +2,7 @@ FROM rust:latest as builder
 
 WORKDIR /app 
 COPY . . 
-RUN cargo build --release
+RUN cargo install --path .
 
 
 FROM alpine:3.16.0
