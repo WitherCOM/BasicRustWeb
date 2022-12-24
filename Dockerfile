@@ -14,7 +14,7 @@ ENV CARGO_TARGET_ARMV7_UNKNOWN_LINUX_GNUEABIHF_LINKER=arm-linux-gnueabihf-gcc CC
 RUN cargo build --release --target armv7-unknown-linux-gnueabihf
 
 RUN mkdir target/amd64 && cp target/x86_64-unknown-linux-musl/release/web-app target/amd64 && \
-    mkdir target/arm && target/armv7-unknown-linux-gnueabihf/release/web-app target/arm
+    mkdir target/arm && cp target/armv7-unknown-linux-gnueabihf/release/web-app target/arm
 
 ################
 ##### Runtime
