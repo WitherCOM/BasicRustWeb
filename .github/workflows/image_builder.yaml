@@ -45,6 +45,6 @@ jobs:
         with:
           context: .
           file: Dockerfile.armv7
-          platforms: linux/arm32v7
+          platforms: linux/arm/v7
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
