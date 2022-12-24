@@ -12,7 +12,7 @@ RUN rustup toolchain install stable-armv7-unknown-linux-musleabi
 RUN cargo build --release --target x86_64-unknown-linux-musl
 RUN cargo build --release --target armv7-unknown-linux-musleabi
 
-RUN mkdir target/amd64 && cp target/x86_64-unknown-linux-musl/web-app target/amd64 && /
+RUN mkdir target/amd64 && cp target/x86_64-unknown-linux-musl/web-app target/amd64 && \
     mkdir target/arm && target/armv7-unknown-linux-musleabi/web-app target/arm_v7
 
 ################
