@@ -4,7 +4,7 @@ FROM rust:buster as builder
 
 WORKDIR /app
 COPY . .
-RUN cargo build --release
+RUN --security=insecure mkdir -p /root/.cargo && chmod 777 /root/.cargo && mount -t tmpfs none /root/.cargo && cargo build --release
 
 ################
 ##### Runtime
