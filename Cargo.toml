@@ -1,5 +1,5 @@
 [package]
-name = "FirstWebApp" # the name of the package
+name = "first_web_app" # the name of the package
 version = "1.0.0"    # the current version, obeying semver
 authors = ["Finch <nemeth.csaba.tibor@gmail.com>"]
 [dependencies]
