@@ -3,4 +3,4 @@ name = "web-app" # the name of the package
 version = "1.0.0"    # the current version, obeying semver
 edition = "2021"
 [dependencies]
-rocket = "0.5.0-rc.2"
+axum = "0.6.1"

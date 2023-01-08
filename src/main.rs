@@ -1,11 +1,18 @@
-#[macro_use] extern crate rocket;
-
-#[get("/")]
-fn index() -> &'static str {
-    "Hello, world!"
+use axum::{
+    routing:get,
+    Router
 }
 
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![index])
+async fn index() -> &'static string {
+    "Hello, World!"
+}
+
+#[tokio::main]
+async fn main() {
+    let app = Router::new().route('/',get(index));
+        
+    axum::Server::bind(&"0.0.0.0:80".parse().unwrap())
+        .serve(app.into_make_service())
+        .await
+        .unwrap()
 }
