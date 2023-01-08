@@ -14,5 +14,5 @@ async fn main() {
     axum::Server::bind(&"0.0.0.0:80".parse().unwrap())
         .serve(app.into_make_service())
         .await
-        .unwrap()
+        .unwrap();
 }
