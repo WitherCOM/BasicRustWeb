@@ -1,16 +1,14 @@
 use axum::{
-    routing:get,
-    Router
-}
-
-async fn index() -> &'static string {
-    "Hello, World!"
-}
+    routing::get,
+    Router,
+};
 
 #[tokio::main]
 async fn main() {
-    let app = Router::new().route("/",get(index));
-        
+    // build our application with a single route
+    let app = Router::new().route("/", get(|| async { "Hello, World!" }));
+
+    // run it with hyper on localhost:3000
     axum::Server::bind(&"0.0.0.0:80".parse().unwrap())
         .serve(app.into_make_service())
         .await
